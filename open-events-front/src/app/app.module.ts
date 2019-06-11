@@ -2,11 +2,12 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
 // Modules
+import { CoreModule } from "./core/core.module";
 import { SharedModule } from "./shared/shared.module";
+import { AppRoutingModule } from "./app-routing.module";
 import { EventsModule } from "./events/events.module";
 import { LoginModule } from "./login/login.module";
 import { ProfileModule } from "./profile/profile.module";
-import { AppRoutingModule } from "./app-routing.module";
 
 // Components
 import { AppComponent } from "./app.component";
@@ -22,6 +23,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
     PageNotFoundComponent
   ],
   imports: [
+    CoreModule,
     BrowserModule,
     AppRoutingModule,
     SharedModule,
