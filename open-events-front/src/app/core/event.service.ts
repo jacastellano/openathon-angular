@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http
 import { Observable, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
 import { environment } from "../../environments/environment";
+import { Event } from "../models/event";
 
 @Injectable({
   providedIn: "root"
@@ -32,8 +33,45 @@ export class EventService {
     );
   }
 
-  // Error handling
+  addEvent(event: Event): Observable<any> {
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json"
+    });
 
+    return this.http
+      .post(environment.apiURL + "events/", event, { headers })
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  updateEvent(event: Event): Observable<any> {
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json"
+    });
+
+    return this.http
+      .put(environment.apiURL + "events/" + event.id, event, { headers })
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  deleteEvent(id: string): Observable<any> {
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json"
+    });
+    return this.http
+      .delete(environment.apiURL + "events/" + id, { headers })
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  // Error handling
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

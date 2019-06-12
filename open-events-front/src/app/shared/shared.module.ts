@@ -1,4 +1,6 @@
 import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
 
 //Angular material
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -7,7 +9,8 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatListModule } from "@angular/material/list";
 import { MatCardModule } from "@angular/material/card";
 import { MatTableModule } from "@angular/material/table";
-import { RouterModule } from "@angular/router";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 import "hammerjs";
 
 @NgModule({
@@ -20,6 +23,10 @@ import "hammerjs";
     MatCardModule,
     MatTableModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   exports: [
     BrowserAnimationsModule,
@@ -28,7 +35,11 @@ import "hammerjs";
     MatListModule,
     MatCardModule,
     MatTableModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   entryComponents: []
 })

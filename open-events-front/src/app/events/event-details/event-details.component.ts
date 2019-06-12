@@ -15,7 +15,15 @@ export class EventDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private eventService: EventService,
     private router: Router
-  ) {}
+  ) { }
+
+  deleteEvent(event: Event) {
+    console.log(event);
+    this.eventService.deleteEvent(event.id).subscribe(() => {
+      console.log("Event Removed");
+    });
+    this.router.navigate(["/events"]);
+  }
 
   ngOnInit() {
     const id = this.route.snapshot.params["id"];
