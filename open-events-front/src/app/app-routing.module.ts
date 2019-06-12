@@ -15,7 +15,7 @@ import { SignupComponent } from "./login/signup/signup.component";
 const routes: Routes = [
     { path: "home", component: LandingPageComponent },
     { path: "events", component: EventListComponent },
-    { path: "profile", component: ProfileComponent },
+    { path: "profile", component: ProfileComponent, canActivate: [AuthGuardService] },
     { path: "login", component: LoginComponent },
     { path: "eventDetails/:id", component: EventDetailsComponent },
     { path: "addEditEvent/:id", component: AddEditEventComponent, canActivate: [AuthGuardService] },
