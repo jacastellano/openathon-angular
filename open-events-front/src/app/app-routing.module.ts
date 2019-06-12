@@ -8,6 +8,7 @@ import { LoginComponent } from "./login/login.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { EventDetailsComponent } from "./events/event-details/event-details.component";
 import { AddEditEventComponent } from "./events/add-edit-event/add-edit-event.component";
+import { SignupComponent } from "./login/signup/signup.component";
 
 const routes: Routes = [
     { path: "home", component: LandingPageComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
     { path: "login", component: LoginComponent },
     { path: "eventDetails/:id", component: EventDetailsComponent },
     { path: "addEditEvent/:id", component: AddEditEventComponent },
+    { path: "signup", component: SignupComponent },
     { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "**", component: PageNotFoundComponent }
 ];
