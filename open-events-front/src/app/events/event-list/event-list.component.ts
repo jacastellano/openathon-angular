@@ -12,6 +12,7 @@ export class EventListComponent implements OnInit {
 
   events: Event[];
   selectedEvent: Event;
+  displayedColumns: string[] = ["Date", "Location", "Title"];
 
   constructor(private eventService: EventService) { }
 
