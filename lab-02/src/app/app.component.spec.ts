@@ -24,10 +24,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('open-events-front');
   });
 
-  xit('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('open-events-front app is running!');
-  });
 });
