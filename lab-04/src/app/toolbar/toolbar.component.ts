@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Main toolbar header
+ */
 @Component({
   selector: 'oevents-toolbar',
   templateUrl: './toolbar.component.html',

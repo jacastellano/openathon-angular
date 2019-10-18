@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Event } from '../../models/event.model';
 
+/**
+ * Event detail page
+ */
 @Component({
   selector: 'oevents-event-details',
   templateUrl: './event-details.component.html',
@@ -8,6 +11,9 @@ import { Event } from '../../models/event.model';
 })
 export class EventDetailsComponent implements OnInit {
 
+  /**
+   * Event data to show in component
+   */
   @Input()
   event: Event;
 

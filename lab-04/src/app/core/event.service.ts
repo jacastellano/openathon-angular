@@ -4,6 +4,9 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
+/**
+ * Event service
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +16,9 @@ export class EventService {
     private http: HttpClient
   ) { }
 
+  /**
+   * get event list
+   */
   getEvents(): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -24,7 +30,10 @@ export class EventService {
     );
   }
 
-  // Error handling
+  /**
+   * Error handling
+   * @param error happened error
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

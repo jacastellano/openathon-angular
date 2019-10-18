@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Profile page
+ */
 @Component({
   selector: 'oevents-profile',
   templateUrl: './profile.component.html',
