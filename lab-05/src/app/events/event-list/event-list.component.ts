@@ -18,9 +18,9 @@ export class EventListComponent implements OnInit {
   events: Event[];
 
   /**
-   * Current selected event
+   * Material table columns definition
    */
-  selectedEvent: Event;
+  displayedColumns: string[] = ['date', 'location', 'title'];
 
   constructor(
     private eventService: EventService,
@@ -31,20 +31,11 @@ export class EventListComponent implements OnInit {
   }
 
   /**
-   * Execute when click on menu
-   * @param event received event
-   */
-  onSelectEvent(event: Event) {
-    this.selectedEvent = event;
-  }
-
-  /**
    * Rescue event from service
    */
   getEvents() {
     this.eventService.getEvents().subscribe((events: Event[]) => {
       this.events = events;
-      this.selectedEvent = events[0];
     });
   }
 

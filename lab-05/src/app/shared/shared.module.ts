@@ -45,6 +45,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import 'hammerjs';
 
+// Angular router
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -91,6 +94,7 @@ import 'hammerjs';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
+    RouterModule,
   ],
   exports: [
     BrowserAnimationsModule,
@@ -136,6 +140,7 @@ import 'hammerjs';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
+    RouterModule,
   ],
   entryComponents: []
 })

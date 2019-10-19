@@ -31,6 +31,21 @@ export class EventService {
   }
 
   /**
+   * Get event by id
+   * @param id Event Id
+   */
+  getEvent(id: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.get(environment.apiURL + '/events/' + id, { headers }).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  /**
    * Error handling
    * @param error happened error
    */

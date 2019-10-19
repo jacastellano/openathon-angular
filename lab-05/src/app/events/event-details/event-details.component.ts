@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Event } from '../../models/event.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EventService } from 'src/app/core/event.service';
 
 /**
  * Event detail page
@@ -14,12 +16,30 @@ export class EventDetailsComponent implements OnInit {
   /**
    * Event data to show in component
    */
-  @Input()
-  event: Event;
+  event: Event = {
+    id: '',
+    date: null,
+    title: '',
+    description: '',
+    location: '',
+    addedBy: '',
+  };
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private eventService: EventService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+
+    const id = this.route.snapshot.paramMap.get('id');
+
+    this.eventService.getEvent(id).subscribe((event: Event) => {
+      console.log(event);
+      this.event = event;
+    });
+
   }
 
 }
