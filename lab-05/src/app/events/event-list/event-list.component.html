@@ -1,4 +1,9 @@
 <div class="container">
+    <div id="add-event-btn">
+        <button mat-raised-button color="primary" [routerLink]="['/addEditEvent/', '']">
+            Add Event
+        </button>
+    </div>
     <div id="eventTable">
         <table mat-table [dataSource]="events" class="mat-elevation-z8">
 

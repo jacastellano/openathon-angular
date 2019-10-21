@@ -48,6 +48,9 @@ import 'hammerjs';
 // Angular router
 import { RouterModule } from '@angular/router';
 
+// Forms
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -95,6 +98,8 @@ import { RouterModule } from '@angular/router';
     PortalModule,
     ScrollingModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     BrowserAnimationsModule,
@@ -141,6 +146,8 @@ import { RouterModule } from '@angular/router';
     PortalModule,
     ScrollingModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   entryComponents: []
 })

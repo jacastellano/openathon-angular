@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from '../../shared/shared.module';
 import { EventListComponent } from './event-list.component';
 
@@ -15,6 +16,7 @@ describe('EventListComponent', () => {
       imports: [
         HttpClientModule,
         SharedModule,
+        RouterTestingModule,
       ]
     })
       .compileComponents();

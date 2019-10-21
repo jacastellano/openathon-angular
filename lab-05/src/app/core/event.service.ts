@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Event } from '../models/event.model';
 
 /**
  * Event service
@@ -43,6 +44,52 @@ export class EventService {
       retry(3),
       catchError(this.handleError)
     );
+  }
+
+  /**
+   * Create event
+   * @param event Event data
+   */
+  addEvent(event: Event): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http
+      .post(environment.apiURL + '/events/', event, { headers })
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  /**
+   * Udate event
+   * @param event Event data
+   */
+  updateEvent(event: Event): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http
+      .put(environment.apiURL + '/events/' + event.id, event, { headers })
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  deleteEvent(id: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http
+      .delete(environment.apiURL + '/events/' + id, { headers })
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
   }
 
   /**

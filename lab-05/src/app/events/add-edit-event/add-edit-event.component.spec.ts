@@ -1,29 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from '../../shared/shared.module';
-import { EventDetailsComponent } from './event-details.component';
+import { AddEditEventComponent } from './add-edit-event.component';
 
-describe('EventDetailsComponent', () => {
-  let component: EventDetailsComponent;
-  let fixture: ComponentFixture<EventDetailsComponent>;
+describe('AddEditEventComponent', () => {
+  let component: AddEditEventComponent;
+  let fixture: ComponentFixture<AddEditEventComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EventDetailsComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      declarations: [AddEditEventComponent],
       imports: [
-        SharedModule,
         HttpClientModule,
         RouterTestingModule,
-      ],
+        SharedModule,
+      ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventDetailsComponent);
+    fixture = TestBed.createComponent(AddEditEventComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

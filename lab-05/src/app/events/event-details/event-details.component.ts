@@ -32,14 +32,23 @@ export class EventDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     const id = this.route.snapshot.paramMap.get('id');
-
     this.eventService.getEvent(id).subscribe((event: Event) => {
       console.log(event);
       this.event = event;
     });
+  }
 
+  /**
+   * Delete event
+   * @param event Selected event
+   */
+  deleteEvent(event: Event) {
+    console.log(event);
+    this.eventService.deleteEvent(event.id).subscribe(() => {
+      console.log('Event Removed');
+    });
+    this.router.navigate(['/events']);
   }
 
 }
