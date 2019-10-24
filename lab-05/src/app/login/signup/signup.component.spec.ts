@@ -3,18 +3,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Routes } from '@angular/router';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { SharedModule } from '../shared/shared.module';
-import { LoginComponent } from './login.component';
+import { SharedModule } from '../../shared/shared.module';
+import { SignupComponent } from './signup.component';
 
 const routes: Routes = [];
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('SignupComponent', () => {
+  let component: SignupComponent;
+  let fixture: ComponentFixture<SignupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent],
+      declarations: [SignupComponent],
       imports: [
         FormsModule,
         ReactiveFormsModule,
@@ -30,7 +30,7 @@ describe('LoginComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(SignupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
