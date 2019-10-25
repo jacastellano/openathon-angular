@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { EventService } from './event.service';
 import { UserService } from './user.service';
+import { AuthGuard } from './auth.guard';
 
 /**
  * App Core Module
@@ -16,6 +17,7 @@ import { UserService } from './user.service';
   providers: [
     EventService,
     UserService,
+    AuthGuard,
   ],
 })
 export class CoreModule { }

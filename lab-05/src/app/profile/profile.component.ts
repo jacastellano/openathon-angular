@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user.model';
 
 /**
  * Profile page
@@ -10,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+  user: User;
+
   constructor() { }
 
   ngOnInit() {
+    this.getUser();
+  }
+
+  getUser() {
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
 }
