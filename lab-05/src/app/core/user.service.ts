@@ -85,7 +85,7 @@ export class UserService {
    * Update user is authenticated status
    */
   private setUser() {
-    this.isAuthenticated = localStorage.getItem('user') ? true : false;
+    this.isAuthenticated = localStorage.getItem('user') !== null;
   }
 
   /**

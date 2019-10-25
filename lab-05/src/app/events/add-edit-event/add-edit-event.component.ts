@@ -79,16 +79,22 @@ export class AddEditEventComponent implements OnInit {
     if (this.event.id) {
       this.eventService.updateEvent(this.event).subscribe((event: Event) => {
         console.log(event);
-        this.addEditForm.reset();
-        this.router.navigate(['/events']);
+        this.navigate();
       });
     } else {
       this.eventService.addEvent(this.event).subscribe((event: Event) => {
         console.log(event);
-        this.addEditForm.reset();
-        this.router.navigate(['/events']);
+        this.navigate();
       });
     }
+  }
+
+  /**
+   * Navigate tu event list
+   */
+  private navigate() {
+    this.addEditForm.reset();
+    this.router.navigate(['/events']);
   }
 
 }
