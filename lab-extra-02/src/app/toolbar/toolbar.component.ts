@@ -1,7 +1,10 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { UserService } from '../core/user.service';
+import { Store, select } from '@ngrx/store';
+import { SubscriptionLike } from 'rxjs';
+import * as login from '../store/login/login.actions';
 
 /**
  * Main toolbar header
@@ -11,7 +14,7 @@ import { UserService } from '../core/user.service';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements DoCheck {
+export class ToolbarComponent implements OnDestroy {
 
   /**
    * Authenticated user
@@ -23,23 +26,24 @@ export class ToolbarComponent implements DoCheck {
    */
   isAuthenticated: boolean;
 
+  /**
+   * Subscription object
+   */
+  subscriptionLogin: SubscriptionLike;
+
   constructor(
     private router: Router,
-    private userService: UserService
-  ) { }
-
-  ngDoCheck() {
-    this.checkUser();
-  }
-
-  /**
-   * Check if user is authenticated and recue
-   */
-  checkUser() {
-    this.isAuthenticated = this.userService.checkUser();
-    if (this.isAuthenticated) {
-      this.user = JSON.parse(localStorage.getItem('user'));
-    }
+    private userService: UserService,
+    private store: Store<any>
+  ) {
+    this.subscriptionLogin = store.pipe(select('login')).subscribe(state => {
+      if (state) {
+        this.isAuthenticated = state.logged;
+        if (this.isAuthenticated) {
+          this.user = JSON.parse(localStorage.getItem('user'));
+        }
+      }
+    });
   }
 
   /**
@@ -47,8 +51,15 @@ export class ToolbarComponent implements DoCheck {
    */
   logout() {
     this.userService.logout();
-    this.isAuthenticated = false;
+    this.store.dispatch(new login.Logged(false));
     this.router.navigate(['/home']);
+  }
+
+  /**
+   * Unsubscribe
+   */
+  ngOnDestroy() {
+    this.subscriptionLogin.unsubscribe();
   }
 
 }

@@ -9,6 +9,10 @@ import { EventsModule } from './events/events.module';
 import { LoginModule } from './login/login.module';
 import { ProfileModule } from './profile/profile.module';
 
+// State Management
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './app.store';
+
 // Components
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -30,6 +34,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     EventsModule,
     LoginModule,
     ProfileModule,
+    StoreModule.forRoot(reducers),
   ],
   providers: [],
   bootstrap: [AppComponent]

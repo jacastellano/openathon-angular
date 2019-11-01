@@ -4,6 +4,8 @@ import { throwError, Observable } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { User } from '../models/user.model';
+import { Store } from '@ngrx/store';
+import * as login from '../store/login/login.actions';
 
 /**
  * User managment service
@@ -18,7 +20,10 @@ export class UserService {
    */
   isAuthenticated: boolean;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private store: Store<any>,
+  ) { }
 
   /**
    * Add user to system
@@ -86,6 +91,8 @@ export class UserService {
    */
   private setUser() {
     this.isAuthenticated = localStorage.getItem('user') !== null;
+    this.isAuthenticated ?
+      this.store.dispatch(new login.Logged(true)) : this.store.dispatch(new login.Logged(false));
   }
 
   /**
