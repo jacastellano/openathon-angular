@@ -25,12 +25,10 @@ export class EventService {
       'Content-Type': 'application/json'
     });
 
-    return this.http.get(environment.apiURL + '/eventss', { headers });
-
-    /*.pipe(
+    return this.http.get(environment.apiURL + '/events', { headers }).pipe(
       retry(3),
       catchError(this.handleError)
-    );*/
+    );
   }
 
   /**
